@@ -1,0 +1,7 @@
+nbproject
+vendor/*
+composer.phar
+composer.lock
+build
+dist
+.svn
