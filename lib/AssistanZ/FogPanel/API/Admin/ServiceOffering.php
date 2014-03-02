@@ -35,10 +35,32 @@ namespace AssistanZ\FogPanel\API\Admin;
  */
 class ServiceOffering
 {
+    /**
+     * The configuration to connect with the server.
+     *
+     * @var \AssistanZ\FogPanel\API\Admin\Config
+     */
+    private $config;
 
-    public function getComputingOffer($param)
+    /**
+     * Initializes Account API with the specified configuration.
+     *
+     * @param \AssistanZ\FogPanel\API\Admin\Config $config
+     */
+    public function __construct(Config $config)
+    {
+        $this->config = $config;
+    }
+
+    /**
+     * Provides list of computing offers.
+     *
+     * @return array
+     */
+    public function getComputingOffer()
     {
         // TODO
+        return array();
     }
 
 }

@@ -35,10 +35,32 @@ namespace AssistanZ\FogPanel\API\Admin;
  */
 class Template
 {
+    /**
+     * The configuration to connect with the server.
+     *
+     * @var \AssistanZ\FogPanel\API\Admin\Config
+     */
+    private $config;
 
-    public function getTemplates($param)
+    /**
+     * Initializes Account API with the specified configuration.
+     *
+     * @param \AssistanZ\FogPanel\API\Admin\Config $config
+     */
+    public function __construct(Config $config)
+    {
+        $this->config = $config;
+    }
+
+    /**
+     * Provides list of templates available to create VMs.
+     *
+     * @return array List of templates.
+     */
+    public function getTemplates()
     {
         // TODO
+        return array();
     }
 
 }

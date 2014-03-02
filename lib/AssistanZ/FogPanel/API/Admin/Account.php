@@ -29,21 +29,72 @@
 namespace AssistanZ\FogPanel\API\Admin;
 
 /**
- * Description of Account
+ * Provides API access to accounts. Provides list of accounts, signup,
+ * get specific account info.
  *
  * @author Sujai SD <sujai@assistanz.com>
  */
 class Account
 {
+    /**
+     * The configuration to connect with the server.
+     *
+     * @var \AssistanZ\FogPanel\API\Admin\Config
+     */
+    private $config;
 
-    public function getAccounts($param)
+    /**
+     * Initializes Account API with the specified configuration.
+     *
+     * @param \AssistanZ\FogPanel\API\Admin\Config $config
+     */
+    public function __construct(Config $config)
     {
-        // TODO
+        $this->config = $config;
     }
 
-    public function createAccount($param)
+    /**
+     * Provides the list of accounts created in the system.
+     *
+     * @param array $filter         The filter criteria for tha accounts list.
+     * @param int   $page           The page of the record list.
+     * @param int   $recordsPerPage Count of records required per page.
+     *
+     * @return array List of accounts
+     */
+    public function getAccounts($filter = array(), $page = null, $recordsPerPage = null)
     {
-        // TODO
+        return array();
+    }
+
+    /**
+     * Creates a account with the following information.
+     *
+     * @param string $username
+     * @param string $password
+     * @param string $firstname
+     * @param string $lastname
+     * @param string $street
+     * @param string $city
+     * @param string $state
+     * @param string $zip
+     * @param string $country
+     *
+     * @return array Details of the created account
+     */
+    public function createAccount($username, $password, $firstname, $lastname,
+            $street, $city, $state, $zip, $country) {
+        return array(
+                "username" => $username,
+                "password" => $password,
+                "firstname" => $firstname,
+                "lastname" => $lastname,
+                "street" => $street,
+                "city" => $city,
+                "state" => $state,
+                "zip" => $zip,
+                "country" => $country
+            );
     }
 
 }

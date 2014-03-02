@@ -29,11 +29,48 @@
 namespace AssistanZ\FogPanel\API\Admin;
 
 /**
- * Description of Config
+ * The configuration to connect to a specific FogPanel server
  *
  * @author Sujai SD <sujai@assistanz.com>
  */
 class Config
 {
-    //put your code here
+    /**
+     *
+     * @var string
+     */
+    private $url;
+
+    /**
+     *
+     * @var string
+     */
+    private $apiKey;
+
+    /**
+     *
+     * @var string
+     */
+    private $apiSecret;
+
+    /**
+     *
+     * @var array
+     */
+    private $options;
+
+    /**
+     * Builds the config to establish connection to the FogPanel server.
+     *
+     * @param type $url
+     * @param type $apiKey
+     * @param type $apiSecret
+     */
+    public function __construct($url, $apiKey, $apiSecret, $options = array())
+    {
+        $this->url = $url;
+        $this->apiKey = $apiKey;
+        $this->apiSecret = $apiSecret;
+        $this->options = $options;
+    }
 }

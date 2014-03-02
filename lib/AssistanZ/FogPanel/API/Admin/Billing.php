@@ -29,31 +29,72 @@
 namespace AssistanZ\FogPanel\API\Admin;
 
 /**
- * Description of Billing
+ * The API interface to use billing related functions, like invoice list,
+ * current month usage etc.
  *
  * @author Sujai SD <sujai@assistanz.com>
  */
 class Billing
 {
+    /**
+     * The configuration to connect with the server.
+     *
+     * @var \AssistanZ\FogPanel\API\Admin\Config
+     */
+    private $config;
 
-    public function getInvoices($param)
+    /**
+     * Initializes Account API with the specified configuration.
+     *
+     * @param \AssistanZ\FogPanel\API\Admin\Config $config
+     */
+    public function __construct(Config $config)
     {
-        // TODO
+        $this->config = $config;
     }
 
-    public function getCurrentUsage($param)
+    /**
+     * Provides the list of invoices
+     *
+     * @return array Array of invoices with invoice items.
+     */
+    public function getInvoices()
     {
         // TODO
+        return array();
     }
 
-    public function getPayments($param)
+    /**
+     * Provides the current month usage which is not yet added to invoice.
+     *
+     * @return array The details of each usage item.
+     */
+    public function getCurrentUsage()
     {
         // TODO
+        return array();
     }
 
-    public function addPayment($param)
+    /**
+     * Provides list of payments made in specific period, by each account.
+     *
+     * @return array Payments made in specific period
+     */
+    public function getPayments()
     {
         // TODO
+        return array();
+    }
+
+    /**
+     * Adds a payment to the payment history.
+     *
+     * @return array The details of the added payment.
+     */
+    public function addPayment()
+    {
+        // TODO
+        return array();
     }
 
 }

@@ -35,15 +35,45 @@ namespace AssistanZ\FogPanel\API\Admin;
  */
 class VirtualMachine
 {
+    /**
+     * The configuration to connect with the server.
+     *
+     * @var \AssistanZ\FogPanel\API\Admin\Config
+     */
+    private $config;
 
-    public function createVM($param)
+    /**
+     * Initializes Account API with the specified configuration.
+     *
+     * @param \AssistanZ\FogPanel\API\Admin\Config $config
+     */
+    public function __construct(Config $config)
     {
-        // TODO
+        $this->config = $config;
     }
 
-    public function getVM($param)
+    /**
+     * Creates a VirtualMachine.
+     *
+     * @return array Details of the created VM.
+     */
+    public function createVM()
     {
         // TODO
+        return array();
+    }
+
+    /**
+     * Finds a VM by the specific UUID.
+     *
+     * @param string $uuid Uniqui ID for the VM to be searched for. Should be a UUID.
+     *
+     * @return array Details of the specific VM.
+     */
+    public function getVM($uuid)
+    {
+        // TODO
+        return array();
     }
 
 }

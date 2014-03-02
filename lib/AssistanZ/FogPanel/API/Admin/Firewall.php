@@ -35,10 +35,32 @@ namespace AssistanZ\FogPanel\API\Admin;
  */
 class Firewall
 {
+    /**
+     * The configuration to connect with the server.
+     *
+     * @var \AssistanZ\FogPanel\API\Admin\Config
+     */
+    private $config;
 
-    public function getFirewalls($param)
+    /**
+     * Initializes Account API with the specified configuration.
+     *
+     * @param \AssistanZ\FogPanel\API\Admin\Config $config
+     */
+    public function __construct(Config $config)
+    {
+        $this->config = $config;
+    }
+
+    /**
+     * Provides list of firewalls.
+     *
+     * @return array List of firewalls.
+     */
+    public function getFirewalls()
     {
         // TODO
+        return array();
     }
 
 }
