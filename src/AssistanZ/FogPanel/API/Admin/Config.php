@@ -73,4 +73,45 @@ class Config
         $this->apiSecret = $apiSecret;
         $this->options = $options;
     }
+
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    public function getApiKey()
+    {
+        return $this->apiKey;
+    }
+
+    public function getApiSecret()
+    {
+        return $this->apiSecret;
+    }
+
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    }
+
+    public function setApiKey($apiKey)
+    {
+        $this->apiKey = $apiKey;
+    }
+
+    public function setApiSecret($apiSecret)
+    {
+        $this->apiSecret = $apiSecret;
+    }
+
+    public function setOptions($options)
+    {
+        $this->options = $options;
+    }
+
 }

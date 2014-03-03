@@ -29,12 +29,12 @@
 namespace AssistanZ\FogPanel\API\Admin;
 
 /**
- * The API interface to use billing related functions, like invoice list,
- * current month usage etc.
+ * Provides API access to accounts. Provides list of accounts, signup,
+ * get specific account info.
  *
  * @author Sujai SD <sujai@assistanz.com>
  */
-class Billing
+class AccountTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * The configuration to connect with the server.
@@ -54,47 +54,47 @@ class Billing
     }
 
     /**
-     * Provides the list of invoices
+     * Provides the list of accounts created in the system.
      *
-     * @return array Array of invoices with invoice items.
+     * @param array $filter         The filter criteria for tha accounts list.
+     * @param int   $page           The page of the record list.
+     * @param int   $recordsPerPage Count of records required per page.
+     *
+     * @return array List of accounts
      */
-    public function getInvoices()
+    public function getAccounts($filter = array(), $page = null, $recordsPerPage = null)
     {
-        // TODO
         return array();
     }
 
     /**
-     * Provides the current month usage which is not yet added to invoice.
+     * Creates a account with the following information.
      *
-     * @return array The details of each usage item.
-     */
-    public function getCurrentUsage()
-    {
-        // TODO
-        return array();
-    }
-
-    /**
-     * Provides list of payments made in specific period, by each account.
+     * @param string $username
+     * @param string $password
+     * @param string $firstname
+     * @param string $lastname
+     * @param string $street
+     * @param string $city
+     * @param string $state
+     * @param string $zip
+     * @param string $country
      *
-     * @return array Payments made in specific period
+     * @return array Details of the created account
      */
-    public function getPayments()
-    {
-        // TODO
-        return array();
-    }
-
-    /**
-     * Adds a payment to the payment history.
-     *
-     * @return array The details of the added payment.
-     */
-    public function addPayment()
-    {
-        // TODO
-        return array();
+    public function createAccount($username, $password, $firstname, $lastname,
+            $street, $city, $state, $zip, $country) {
+        return array(
+                "username" => $username,
+                "password" => $password,
+                "firstname" => $firstname,
+                "lastname" => $lastname,
+                "street" => $street,
+                "city" => $city,
+                "state" => $state,
+                "zip" => $zip,
+                "country" => $country
+            );
     }
 
 }
