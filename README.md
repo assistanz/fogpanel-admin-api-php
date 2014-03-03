@@ -3,7 +3,7 @@ FogPanel Admin API - PHP Library
 
 Simple library interface for FogPanel Admin APIs, Wrapped by CURL calls for all the REST APIs provided.
 
-h2. Installation
+## Installation
 
 ```js
 {
@@ -13,10 +13,10 @@ h2. Installation
 }
 ```
 
-h2. Versions
+## Versions
 
 Version numbers will be distinct from FogPanel release versions. Their compatability will be explained in each version.
 
-h2. Coding Standards
+## Coding Standards
 
-# Follow PSR-2 Standards
+* Follow PSR-2 Standards
