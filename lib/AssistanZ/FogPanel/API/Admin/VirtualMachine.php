@@ -29,7 +29,7 @@
 namespace AssistanZ\FogPanel\API\Admin;
 
 /**
- * Description of VirtualMachine
+ * Provides API access to VirtualMachine. Provides List of VMs, create VM etc.
  *
  * @author Sujai SD <sujai@assistanz.com>
  */

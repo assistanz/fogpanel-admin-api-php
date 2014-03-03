@@ -29,7 +29,7 @@
 namespace AssistanZ\FogPanel\API\Admin;
 
 /**
- * Description of Firewall
+ * The interface to manage and access all firewalls configured in the FogPanel server.
  *
  * @author Sujai SD <sujai@assistanz.com>
  */

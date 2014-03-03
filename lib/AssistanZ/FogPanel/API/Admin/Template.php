@@ -29,7 +29,7 @@
 namespace AssistanZ\FogPanel\API\Admin;
 
 /**
- * Description of Template
+ * Provides API access to Templates. List system and application templates.
  *
  * @author Sujai SD <sujai@assistanz.com>
  */

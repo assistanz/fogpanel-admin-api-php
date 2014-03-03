@@ -29,7 +29,7 @@
 namespace AssistanZ\FogPanel\API\Admin;
 
 /**
- * Description of ServiceOffering
+ * Interface to manage/access Service Offering provided by FogPanel server.
  *
  * @author Sujai SD <sujai@assistanz.com>
  */
