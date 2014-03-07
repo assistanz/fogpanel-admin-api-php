@@ -39,9 +39,9 @@ class Account
     /**
      * The configuration to connect with the server.
      *
-     * @var \AssistanZ\FogPanel\API\Admin\Config
+     * @var \AssistanZ\FogPanel\API\Admin\Request
      */
-    private $config;
+    private $request;
 
     /**
      * Initializes Account API with the specified configuration.
@@ -50,7 +50,7 @@ class Account
      */
     public function __construct(Config $config)
     {
-        $this->config = $config;
+        $this->request = new Request($config);
     }
 
     /**
@@ -64,7 +64,16 @@ class Account
      */
     public function getAccounts($filter = array(), $page = null, $recordsPerPage = null)
     {
-        return array();
+        $params = array();
+        if ($page) {
+            $params["page"] = $page;
+        }
+        
+        if ($recordsPerPage) {
+            $params["recordsPerPage"] = $recordsPerPage;
+        }
+        
+        return $this->request->get("/api/admin/account/listAccounts", $params);
     }
 
     /**
@@ -84,7 +93,7 @@ class Account
      */
     public function createAccount($username, $password, $firstname, $lastname,
             $street, $city, $state, $zip, $country) {
-        return array(
+        return $this->request->get("/api/admin/account/createAccount", array(
                 "username" => $username,
                 "password" => $password,
                 "firstname" => $firstname,
@@ -94,7 +103,7 @@ class Account
                 "state" => $state,
                 "zip" => $zip,
                 "country" => $country
-            );
+            ));
     }
 
 }
