@@ -105,17 +105,19 @@ class Account
      * @return array Details of the created account
      */
     public function createAccount($username, $password, $firstname, $lastname,
-            $street, $city, $state, $zip, $country) {
+            $street, $city, $state, $zip, $country, $phoneNumber) {
         return $this->request->get("/api/admin/account/createAccount", array(
-                "username" => $username,
+                "userName" => $username,
                 "password" => $password,
-                "firstname" => $firstname,
-                "lastname" => $lastname,
+                "firstName" => $firstname,
+                "lastName" => $lastname,
                 "street" => $street,
                 "city" => $city,
                 "state" => $state,
                 "zip" => $zip,
-                "country" => $country
+                "country" => $country,
+                "phoneNumber" => $phoneNumber,
+                "streetExtension" => "1"
             ));
     }
 

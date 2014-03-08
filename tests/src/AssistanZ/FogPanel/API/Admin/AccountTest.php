@@ -36,14 +36,26 @@ namespace AssistanZ\FogPanel\API\Admin;
  */
 class AccountTest extends \PHPUnit_Framework_TestCase
 {
-    
-    public function test_listAccounts()
+
+    public function testListAccounts()
     {
         $config = new Config(SERVER_URL, API_KEY, API_SECRET);
-        
+
         $account = new Account($config);
         $result = $account->listAccounts();
         //var_dump($result);
+        $this->assertFalse($result === null || empty($result));
+    }
+
+    public function testCreateAccount()
+    {
+        $config = new Config(SERVER_URL, API_KEY, API_SECRET);
+
+        $account = new Account($config);
+        $result = $account->createAccount("sujai@lan.assistanz.com", 
+                "passw0rd", "Sujai", "SD", "40 2nd Street", "Coimbatore", "1", "641029", "1", "9360251145");
+        var_dump($result);
+        echo $result[0];
         $this->assertFalse($result === null || empty($result));
     }
 

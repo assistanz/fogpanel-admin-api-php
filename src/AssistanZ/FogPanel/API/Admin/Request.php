@@ -74,7 +74,7 @@ class Request
      *
      * @return string RequestURL
      */
-    private function getRequestRUL($apiURI)
+    private function getRequestURL($apiURI)
     {
         return $this->config->getUrl() . $apiURI;
     }
@@ -90,7 +90,7 @@ class Request
 
     public function get($apiURI, $params = array())
     {
-        $url = $this->getRequestRUL($apiURI);
+        $url = $this->getRequestURL($apiURI);
         $params = $this->prepareRequest($params);
         $curl = new \Curl();
         $response = $curl->get($url, $params);
@@ -100,7 +100,7 @@ class Request
 
     public function post($apiURI, $params = array())
     {
-        $url = $this->getRequestRUL($apiURI);
+        $url = $this->getRequestURL($apiURI);
         $params = $this->prepareRequest($params);
         $curl = new \Curl();
         $response = $curl->post($url, $params);
