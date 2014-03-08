@@ -26,10 +26,19 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-$autoloadFile = __DIR__.'/../autoload.php';
+$paths = get_include_path();
+
+set_include_path($paths . ":" . __DIR__ . "/../src/");
+
+$autoloadFile = __DIR__.'/../vendor/autoload.php';
 if (!file_exists($autoloadFile)) {
-    $autoloadFile = __DIR__.'/../autoload.php.dist';
+    $autoloadFile = __DIR__.'/../vendor/autoload.php.dist';
 }
 if (!($loader = @include $autoloadFile)) {
     die("please use auto loader!\n");
 }
+
+//TODO: Looks like a hack, it should have worked with autoloading.
+require_once __DIR__ . "/../vendor/shuber/curl/curl.php";
+$loader->add("AssistanZ", __DIR__ . "/../src/");
+require_once 'test-config.php';

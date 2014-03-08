@@ -62,8 +62,21 @@ class Account
      *
      * @return array List of accounts
      */
-    public function getAccounts($filter = array(), $page = null, $recordsPerPage = null)
+    public function listAccounts($filter = array(), $page = null, $recordsPerPage = null)
     {
+        $allowedParams = array(
+            'fromDate' => false, 
+            'toDate' => false,
+            'status' => false
+        );
+        
+        // Validate parameters
+        foreach ($filter as $key => $value) {
+            if (!isset($allowedParams[$key])) {
+                throw new Exception("Invalid Param \'$key\'");
+            }
+        }
+        
         $params = array();
         if ($page) {
             $params["page"] = $page;

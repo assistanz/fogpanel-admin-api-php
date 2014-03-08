@@ -84,6 +84,8 @@ class Request
         $signature = $this->createSignature($params);
         $params["apiKey"] = $this->config->getApiKey();
         $params["signature"] = $signature;
+        
+        return $params;
     }
 
     public function get($apiURI, $params = array())
@@ -92,7 +94,7 @@ class Request
         $params = $this->prepareRequest($params);
         $curl = new \Curl();
         $response = $curl->get($url, $params);
-
+        
         return json_decode($response->body, true);
     }
 

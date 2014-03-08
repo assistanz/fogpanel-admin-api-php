@@ -36,65 +36,15 @@ namespace AssistanZ\FogPanel\API\Admin;
  */
 class AccountTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * The configuration to connect with the server.
-     *
-     * @var \AssistanZ\FogPanel\API\Admin\Config
-     */
-    private $config;
-
-    /**
-     * Initializes Account API with the specified configuration.
-     *
-     * @param \AssistanZ\FogPanel\API\Admin\Config $config
-     */
-    public function __construct(Config $config)
+    
+    public function test_listAccounts()
     {
-        $this->config = $config;
-    }
-
-    /**
-     * Provides the list of accounts created in the system.
-     *
-     * @param array $filter         The filter criteria for tha accounts list.
-     * @param int   $page           The page of the record list.
-     * @param int   $recordsPerPage Count of records required per page.
-     *
-     * @return array List of accounts
-     */
-    public function getAccounts($filter = array(), $page = null, $recordsPerPage = null)
-    {
-        return array();
-    }
-
-    /**
-     * Creates a account with the following information.
-     *
-     * @param string $username
-     * @param string $password
-     * @param string $firstname
-     * @param string $lastname
-     * @param string $street
-     * @param string $city
-     * @param string $state
-     * @param string $zip
-     * @param string $country
-     *
-     * @return array Details of the created account
-     */
-    public function createAccount($username, $password, $firstname, $lastname,
-            $street, $city, $state, $zip, $country) {
-        return array(
-                "username" => $username,
-                "password" => $password,
-                "firstname" => $firstname,
-                "lastname" => $lastname,
-                "street" => $street,
-                "city" => $city,
-                "state" => $state,
-                "zip" => $zip,
-                "country" => $country
-            );
+        $config = new Config(SERVER_URL, API_KEY, API_SECRET);
+        
+        $account = new Account($config);
+        $result = $account->listAccounts();
+        //var_dump($result);
+        $this->assertFalse($result === null || empty($result));
     }
 
 }
