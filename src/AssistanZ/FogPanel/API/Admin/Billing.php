@@ -56,24 +56,66 @@ class Billing
     /**
      * Provides the list of invoices
      *
+     * @param type $username
+     * @param type $page
+     * @param type $recordsPerPage
+     *
      * @return array Array of invoices with invoice items.
      */
-    public function getInvoices()
+    public function getInvoice($filters = array(), $page = null, $recordsPerPage = null)
     {
-        // TODO
-        return array();
+        $allowedParams = array(
+            'fromDate' => false, 
+            'toDate' => false,
+            'userName' => false
+        );
+        
+        // Validate parameters
+        foreach ($filters as $key => $value) {
+            if (!isset($allowedParams[$key])) {
+                throw new Exception("Invalid Param \'$key\'");
+            }
+        }
+        
+        $params = array();
+        if ($page) {
+            $params["page"] = $page;
+        }
+        
+        if ($recordsPerPage) {
+            $params["recordsPerPage"] = $recordsPerPage;
+        }
+        
+        // Form the URL
+        return $this->request->get("/api/admin/billing/getInvoice", array_merge($filters, $params));
     }
 
     /**
      * Provides the current month usage which is not yet added to invoice.
      *
+     * @param string $username
+     * @param int $page
+     * @param int $recordsPerPage
+     * 
      * @return array The details of each usage item.
      */
-    public function getCurrentUsage()
+    public function getCurrentUsage($username = null, $page = null, $recordsPerPage = null)
     {
-        // TODO
+        $params = array();
+        if ($username) {
+            $params["userName"] = $username;
+        }
+        
+        if ($page) {
+            $params["page"] = $page;
+        }
+        
+        if ($recordsPerPage) {
+            $params["recordsPerPage"] = $recordsPerPage;
+        }
+        
         // Form the URL
-        return array();
+        return $this->request->get("/api/admin/billing/currentUsage", $params);
     }
 
     /**
