@@ -36,6 +36,16 @@ namespace AssistanZ\FogPanel\API\Admin;
  */
 class Account
 {
+
+    const STATUS_ACTIVE = "ACTIVE";
+    const STATUS_BLOCKED = "BLOCKED";
+    const STATUS_LOCKED = "LOCKED";
+    const STATUS_DISABLED = "DISABLED";
+    const STATUS_NOT_VERIFIED = "NOT_VERIFIED";
+    const STATUS_SUSPENDED = "SUSPENDED";
+    const STATUS_CANCELED = "CANCELED";
+    const STATUS_CLOSED = "CLOSED";
+
     /**
      * The configuration to connect with the server.
      *
@@ -111,7 +121,7 @@ class Account
                 "password" => $password,
                 "firstName" => $firstname,
                 "lastName" => $lastname,
-                "street" => $street,
+                "streetAddress" => $street,
                 "city" => $city,
                 "state" => $state,
                 "zip" => $zip,

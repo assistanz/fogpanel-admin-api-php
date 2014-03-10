@@ -46,6 +46,16 @@ class AccountTest extends \PHPUnit_Framework_TestCase
         //var_dump($result);
         $this->assertFalse($result === null || empty($result));
     }
+    
+    public function testListAccountsByStatus()
+    {
+        $config = new Config(SERVER_URL, API_KEY, API_SECRET);
+
+        $account = new Account($config);
+        $result = $account->listAccounts(array("status" => Account::STATUS_ACTIVE));
+        //var_dump($result);
+        $this->assertFalse($result === null || empty($result));
+    }    
 
     public function testCreateAccount()
     {
