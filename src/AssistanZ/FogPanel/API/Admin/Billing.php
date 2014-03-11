@@ -56,9 +56,9 @@ class Billing
     /**
      * Provides the list of invoices
      *
-     * @param type $username
-     * @param type $page
-     * @param type $recordsPerPage
+     * @param array $filters
+     * @param int $page
+     * @param int $recordsPerPage
      *
      * @return array Array of invoices with invoice items.
      */
@@ -121,23 +121,62 @@ class Billing
     /**
      * Provides list of payments made in specific period, by each account.
      *
+     * @param array $filters
+     * @param int   $page
+     * @param int   $recordsPerPage
+     * 
      * @return array Payments made in specific period
+     * 
+     * @throws Exception
      */
-    public function getPayments()
+    public function getPayments($filters = array(), $page = null, $recordsPerPage = null)
     {
-        // TODO
-        return array();
+        $allowedParams = array(
+            'fromDate' => false, 
+            'toDate' => false,
+            'userName' => false
+        );
+        
+        // Validate parameters
+        foreach ($filters as $key => $value) {
+            if (!isset($allowedParams[$key])) {
+                throw new Exception("Invalid Param \'$key\'");
+            }
+        }
+        
+        $params = array();
+        if ($page) {
+            $params["page"] = $page;
+        }
+        
+        if ($recordsPerPage) {
+            $params["recordsPerPage"] = $recordsPerPage;
+        }
+        
+        // Form the URL
+        return $this->request->get("/api/admin/billing/listPayments", array_merge($filters, $params));
     }
 
     /**
      * Adds a payment to the payment history.
-     *
+     * 
+     * @param string $username
+     * @param string $date      Should be the date of payment within current invoice period, with YYYY-MM-DD format
+     * @param float  $amount    Should be a float value with fixed 2 decimal places.
+     * @param string $paymentId A unique value used to find this payment, dumplicate entry not allowed.
+     * 
      * @return array The details of the added payment.
      */
-    public function addPayment()
+    public function addPayment($username, $date, $amount, $paymentId)
     {
-        // TODO
-        return array();
+        $params = array(
+            'userName' => $username,
+            'date' => $date,
+            'amount' => $amount,
+            'paymentId' => $paymentId
+        );
+        
+        return $this->request->get("/api/admin/billing/addPayment", $params);
     }
 
 }
